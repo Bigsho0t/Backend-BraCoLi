@@ -1,0 +1,7 @@
+fastapi
+alembic
+SQLAlchemy
+psycopg2-binary
+python-dotenv
+pandas
+openpyxl
