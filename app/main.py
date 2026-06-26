@@ -12,7 +12,6 @@ def root():
 def health_check():
     return {"status": "ok"}
 
-# Adicionado :path para que o FastAPI capture barras "/" sem quebrar a rota
 @app.get("/moleculas/smiles/{smiles_string:path}")
 def obter_molecula_por_smiles(smiles_string: str, db: Session = Depends(get_db)):
     molecula = db.query(Molecula).filter(Molecula.smiles == smiles_string).first()
