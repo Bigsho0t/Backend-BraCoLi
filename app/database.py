@@ -19,12 +19,22 @@ class Molecula(Base):
     name = Column(String, nullable=False)
     molecular_formula = Column(String)
     molar_mass = Column(Float)  # Corresponde ao Molar Mass (g/mol)
-    SMILES = Column(String, index=True)
+    smiles = Column(String, index=True)
     melting_range = Column(String) # Usando string caso tenha intervalos tipo "120-122"
     type = Column(String)
     origin = Column(String)
     observation = Column(Text)
     reference = Column(Text)
+
+class Composto(Base):
+    __tablename__ = "compostos"
+
+    id = Column(String, primary_key=True)
+    smiles = Column(String)
+    inchikey = Column(String)
+    fingerprint = Column(String)
+    molecular_weight = Column(Float)
+
 
 # Função utilitária para abrir/fechar sessões nas rotas
 def get_db():

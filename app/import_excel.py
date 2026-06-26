@@ -1,15 +1,18 @@
 import pandas as pd
 from app.database import engine
 
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+caminho_planilha = os.path.join(BASE_DIR, "BraCoLi_v1_database.xlsx")
+
 # lê o excel
-df = pd.read_excel("BraCoLi_v1_database.xlsx")
+df = pd.read_excel(caminho_planilha)
 
 # padroniza colunas (IMPORTANTE)
 df.columns = [
     "name",
     "molecular_formula",
     "molar_mass",
-    "SMILES",
+    "smiles",
     "melting_range",
     "type",
     "origin",
