@@ -11,7 +11,7 @@ def processar_sdf():
     db = next(get_db())  # Obtém uma sessão do banco de dados
 
     try:
-        # Chem.SDMolSupplier lê arquivos .sdf linha por linha de forma eficiente
+        # Chem.SDMolSupplier lê arquivos .sdf linha por linha
         with open(caminho_sdf, 'rb') as f:
             supplier = Chem.ForwardSDMolSupplier(f)
 
@@ -39,9 +39,8 @@ def processar_sdf():
                 peso_molecular = Descriptors.MolWt(mol)
                 
                 # 6. Gerar Fingerprint (usado para buscas por similaridade química)
-                # O Morgan Fingerprint (similar ao ECFP4) é o padrão mais aceito na indústria
                 fingerprint = AllChem.GetMorganFingerprintAsBitVect(mol, radius=2, nBits=2048)
-                # Para salvar no banco, você pode converter o fingerprint para uma string binária ou hexadecimal
+                # Para salvar no banco, o fingerprint é convertido em uma string hexadecimal
                 fp_hex = fingerprint.ToBitString()
 
                 novo_composto = Composto(
